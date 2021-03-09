@@ -10,6 +10,7 @@ $(document).ready(function () {
 
   function nextSequence() {
     userClickedPattern = [];
+    level = 0;
     //level counter
     level++;
     $("#level-title").text(`Level ${level}`);
@@ -56,6 +57,7 @@ $(document).ready(function () {
       setTimeout(() => {
         $("body").removeClass("game-over");
       }, 200);
+      $("#level-title").text("Game Over, Press Any Key to Restart");
     }
   }
 });
