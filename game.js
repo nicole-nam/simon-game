@@ -3,15 +3,19 @@ $(document).ready(function () {
 
   const gamePattern = [];
   const userClickedPattern = [];
+  let level = 0;
 
-  nextSequence();
+  // nextSequence();
   function nextSequence() {
     const randomNumber = Math.floor(Math.random() * 4);
     const randomChosenColor = buttonColors[randomNumber];
     gamePattern.push(randomChosenColor);
     //flash
     $(`#${randomChosenColor}`).fadeOut(100).fadeIn(100);
-    // playSound(randomChosenColor);
+    playSound(randomChosenColor);
+    //level counter 
+    level++;
+    $("#level-title").text(`Level ${level}`);
   }
 
   $(".btn").click(function () {
@@ -32,4 +36,6 @@ $(document).ready(function () {
       $(`#${currentColor}`).removeClass("pressed");
     }, 100);
   }
+
+  $(document).on("keypress", nextSequence);
 });
